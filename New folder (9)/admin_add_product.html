@@ -1,0 +1,20 @@
+
+    <h1>Add New Product</h1>
+    <form method="POST" action="/admin/add_product">
+        <label for="name">Product Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="brand">Brand:</label>
+        <input type="text" id="brand" name="brand" required><br><br>
+        
+        <label for="price">Price:</label>
+        <input type="number" step="0.01" id="price" name="price" required><br><br>
+        
+        <label for="description">Description:</label>
+        <textarea id="description" name="description"></textarea><br><br>
+        
+        <label for="image_url">Image Filename (e.g., iphone15.jpg):</label>
+        <input type="text" id="image_url" name="image_url"><br><br>
+        
+        <button type="submit" class="btn">Add Product</button>
+    </form>

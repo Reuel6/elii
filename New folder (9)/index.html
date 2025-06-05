@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <section class="hero">
+        <h1>Welcome to PhoneStore!</h1>
+        <p>Your one-stop shop for the latest mobile phones.</p>
+        <a href="/products" class="btn">Shop Now</a>
+    </section>
+
+    <section class="featured-products">
+        <h2>Featured Phones</h2>
+        <div class="product-grid">
+            {% for product in products %}
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='images/product_images/' + product[5]) }}" alt="{{ product[1] }}">
+                <h3>{{ product[1] }}</h3>
+                <p>{{ product[2] }}</p>
+                <p class="price">${{ "%.2f"|format(product[3]) }}</p>
+                <a href="/product/{{ product[0] }}" class="btn">View Details</a>
+                <a href="/add_to_cart/{{ product[0] }}" class="btn add-to-cart">Add to Cart</a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

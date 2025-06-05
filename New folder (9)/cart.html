@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Shopping Cart{% endblock %}
+
+{% block content %}
+    <h1>Your Shopping Cart</h1>
+    {% if cart_items %}
+        <div class="cart-items">
+            {% for item in cart_items %}
+            <div class="cart-item">
+                <img src="{{ url_for('static', filename='images/product_images/' + item[5]) }}" alt="{{ item[1] }}">
+                <div class="item-details">
+                    <h3>{{ item[1] }}</h3>
+                    <p class="price">${{ "%.2f"|format(item[3]) }}</p>
+                </div>
+                <a href="/remove_from_cart/{{ item[0] }}" class="btn remove-btn">Remove</a>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="cart-summary">
+            <h2>Cart Total: ${{ "%.2f"|format(total_price) }}</h2>
+            <a href="/checkout" class="btn checkout-btn">Proceed to Checkout</a>
+        </div>
+    {% else %}
+        <p>Your cart is empty. <a href="/products">Start shopping now!</a></p>
+    {% endif %}
+{% endblock %}
